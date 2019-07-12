@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Grocerly</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,500,400&display=swap">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/elements/button.css">
+    <link rel="stylesheet" href="css/elements/input.css">
+  </head>
+  <body>
+
+    <link rel="stylesheet" href="css/components/page-header.css">
+    <header class="page-header">
+      <h1 class="title">Grocery List</h1>
+
+      <button type="button" title="Toggle menu" class="button" data-action="menu-toggle" data-target=".page-navigation">
+        <svg class="icon" width="24" height="24" viewBox="0 0 24 24">
+          <path fill="currentColor" d="M3 6h18v2.016h-18v-2.016zM3 12.984v-1.969h18v1.969h-18zM3 18v-2.016h18v2.016h-18z"></path>
+        </svg>
+      </button>
+    </header>
+
+    <link rel="stylesheet" href="css/components/page-navigation.css">
+    <nav class="page-navigation">
+      <button type="button" class="button" title="Clear the entire grocery list">
+        <svg width="24" height="24" viewBox="0 0 24 24">
+          <path fill="currentColor" d="M15.516 3.984h3.469v2.016h-13.969v-2.016h3.469l1.031-0.984h4.969zM8.016 9v9.984h7.969v-9.984h-7.969zM6 18.984v-12h12v12q0 0.797-0.609 1.406t-1.406 0.609h-7.969q-0.797 0-1.406-0.609t-0.609-1.406z"></path>
+        </svg>
+      </button>
+    </nav>
+
+    <link rel="stylesheet" href="css/components/grocery-list.css">
+    <grocery-list></grocery-list>
+
+    <link rel="stylesheet" href="css/components/grocery-form.css">
+    <form action="/" method="POST" class="grocery-form">
+      <input class="input" type="text" name="text" placeholder="e.g. milk, chicken breast" required>
+      <input class="input" type="number" name="quantity" placeholder="Quantity">
+      <select class="input" name="unit">
+        <option value="g">g (gram)</option>
+        <option value="kg">kg (kilogram)</option>
+        <option value="ml">ml (mililitres)</option>
+        <option value="l">l (litres)</option>
+        <option value="pieces">pieces</option>
+      </select>
+      <button type="submit" class="primary-button">Add</button>
+    </form>
+
+    <script type="module" src="app.js" defer></script>
+  </body>
+</html>

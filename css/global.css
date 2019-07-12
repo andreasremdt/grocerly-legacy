@@ -1,0 +1,40 @@
+:root {
+  --orange: rgb(255, 87, 84);
+  --pink: rgb(255, 52, 137);
+  --light-gray: rgb(222, 230, 234);
+  --medium-gray: rgb(191, 189, 190);
+  --dark-gray: rgb(51, 51, 51);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: unset;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  color: var(--dark-gray);
+
+  font: 300 14px/1.6 Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", sans-serif;
+}
+
+table {
+  width: 100%;
+
+  border-collapse: collapse;
+}
+
+td {
+  padding: .5rem 1rem;
+}
+
+td:last-child {
+  width: 58px;
+}
+
+tr:not(:last-child) {
+  border-bottom: 1px solid var(--light-gray);
+}

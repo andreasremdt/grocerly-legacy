@@ -1,0 +1,13 @@
+.grocery-form {
+  padding: 1rem;
+  margin-top: auto;
+  display: grid;
+  grid-template-columns: 120px auto 70px;
+  grid-gap: .5rem;
+
+  box-shadow: 0 -3px 6px rgba(0, 0, 0, .1);
+}
+
+.grocery-form input:first-child {
+  grid-column: 1 / -1;
+}
