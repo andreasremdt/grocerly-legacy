@@ -12,6 +12,7 @@ pomegranate seeds
 */
 
 import "./js/grocery-list.js";
+import { sanitize } from "./js/utils/helpers.js";
 
 (function() {
   "use strict";
@@ -40,11 +41,7 @@ import "./js/grocery-list.js";
 
     var { text, quantity, unit } = form;
 
-    groceryList.add({
-      text: text.value,
-      quantity: quantity.value,
-      unit: unit.value
-    });
+    groceryList.add(sanitize({ text, quantity, unit }));
 
     form.reset();
     form.text.focus();

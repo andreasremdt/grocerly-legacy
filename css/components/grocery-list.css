@@ -20,13 +20,10 @@ grocery-list {
   line-height: 1;
   font-size: 18px;
   font-weight: 500;
-
-  cursor: pointer;
 }
 
-.grocery-list .button:hover,
-.grocery-list .button:focus {
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+.grocery-list .remove:active {
+  color: var(--dark-gray);
 }
 
 .grocery-list .checked {

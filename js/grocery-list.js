@@ -7,26 +7,31 @@ class GroceryList extends BaseElement {
     this.state.items = [];
   }
 
-  exists(search) {
+  exists(text, quantity, unit) {
     return this.state.items.findIndex(item => {
-      if (item.text.toLowerCase().includes(search.toLowerCase())) {
+      if (
+        item.text.toLowerCase() === text.toLowerCase() &&
+        item.unit === unit &&
+        item.quantity === quantity
+      ) {
         return true;
       }
     });
   }
 
-  add({ text, quantity = null, unit, checked = false }) {
-    var duplicate = this.exists(text);
+  add({ text, quantity = null, unit }) {
+    if (!text) {
+      return;
+    }
+
+    var duplicate = this.exists(text, quantity, unit);
 
     if (~duplicate) {
-      this.update(duplicate, arguments);
+      this.update(duplicate, { text, quantity, unit });
     } else {
       this.setState(
         {
-          items: [
-            ...this.state.items,
-            { text, quantity: parseInt(quantity) || "", unit, checked }
-          ]
+          items: [...this.state.items, { text, quantity, unit, checked: false }]
         },
         { persist: true }
       );
@@ -42,21 +47,16 @@ class GroceryList extends BaseElement {
     this.setState({ items: [] });
   }
 
-  update(index, data) {
-    this.setState(
-      {
-        items: this.state.items.map((item, i) => {
-          if (index === i) {
-            if (item.unit === data[0].unit) {
-              item.quantity += +data[0].quantity;
-            }
-          }
+  update(index, ingredient) {
+    var items = this.state.items;
 
-          return item;
-        })
-      },
-      { persist: true }
-    );
+    if (items[index].unit === ingredient.unit && ingredient.quantity) {
+      items[index].quantity += parseInt(ingredient.quantity, 10);
+    } else if (ingredient.quantity) {
+      items.push(ingredient);
+    }
+
+    this.setState({ items }, { persist: true });
   }
 
   clear() {
@@ -96,10 +96,6 @@ class GroceryList extends BaseElement {
     );
   }
 
-  name(item) {
-    return (item.quantity && item.quantity + " " + item.unit) + " " + item.text;
-  }
-
   render() {
     if (!this.state.items.length) {
       return html`
@@ -132,15 +128,22 @@ class GroceryList extends BaseElement {
                   @click=${this.handleToggle}
                   class="${item.checked ? "checked" : ""}"
                 >
-                  ${this.name(item)}
+                  ${item.quantity ? `${item.quantity} ${item.unit}` : ""}
+                  ${item.text}
                 </td>
                 <td>
                   <button
                     class="remove"
                     @click=${this.handleDelete}
                     type="button"
+                    aria-label="Remove item from list"
                   >
-                    &times;
+                    <svg role="img" viewBox="0 0 24 24" width="18" height="18">
+                      <path
+                        fill="currentColor"
+                        d="M5.293 6.707l5.293 5.293-5.293 5.293c-0.391 0.391-0.391 1.024 0 1.414s1.024 0.391 1.414 0l5.293-5.293 5.293 5.293c0.391 0.391 1.024 0.391 1.414 0s0.391-1.024 0-1.414l-5.293-5.293 5.293-5.293c0.391-0.391 0.391-1.024 0-1.414s-1.024-0.391-1.414 0l-5.293 5.293-5.293-5.293c-0.391-0.391-1.024-0.391-1.414 0s-0.391 1.024 0 1.414z"
+                      ></path>
+                    </svg>
                   </button>
                 </td>
               </tr>
