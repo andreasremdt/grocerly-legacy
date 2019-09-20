@@ -48,8 +48,9 @@
 
   <link rel="stylesheet" href="css/components/grocery-form.css" />
   <form action="/" method="POST" class="grocery-form">
-    <input class="input" type="text" name="text" placeholder="e.g. milk, chicken breast" required />
-    <input class="input" type="number" name="quantity" placeholder="Quantity" />
+    <input class="input" type="text" name="text" placeholder="e.g. milk, chicken breast" required autocapitalize="off"
+      autocomplete="off" />
+    <input class="input" type="number" name="quantity" placeholder="Quantity" autocomplete="off" />
     <select class="input" name="unit">
       <option value="g">g (gram)</option>
       <option value="kg">kg (kilogram)</option>

@@ -40,8 +40,6 @@ import { parsePastedContent, sanitize } from "./utils/helpers.js";
   btnClearList.addEventListener("click", handleListClear);
 
   if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register("/sw.js").then(() => {
-      console.log("Service worker has been installed.");
-    });
+    navigator.serviceWorker.register("/sw.js");
   }
 })();
