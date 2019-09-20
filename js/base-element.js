@@ -27,7 +27,7 @@ class BaseElement extends HTMLElement {
 
   setState(state, options = {}) {
     this.state = Object.assign({}, state);
-
+    console.log(this.state);
     if (options.persist) {
       for (let key in state) {
         localStorage.setItem(key, JSON.stringify(state[key]));

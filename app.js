@@ -12,7 +12,7 @@ pomegranate seeds
 */
 
 import "./js/grocery-list.js";
-import { sanitize } from "./js/utils/helpers.js";
+import { parsePastedContent, sanitize } from "./js/utils/helpers.js";
 
 (function() {
   "use strict";
@@ -24,16 +24,13 @@ import { sanitize } from "./js/utils/helpers.js";
   function handlePaste(evt) {
     evt.preventDefault();
 
-    var data = evt.clipboardData.getData("text").split(/\n/g);
-    if (data.length) {
-      data.forEach(entry => {
-        if (!entry.includes(":")) {
-          groceryList.add({ text: entry });
-        }
-      });
+    var items = parsePastedContent(evt.clipboardData.getData("text"));
 
-      form.reset();
-    }
+    items.forEach(item => {
+      groceryList.add(item);
+    });
+
+    form.reset();
   }
 
   function handleFormSubmit(evt) {
@@ -48,7 +45,7 @@ import { sanitize } from "./js/utils/helpers.js";
   }
 
   function handleListClear() {
-    groceryList.reset();
+    groceryList.clear();
   }
 
   form.addEventListener("submit", handleFormSubmit);

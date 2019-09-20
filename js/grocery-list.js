@@ -9,11 +9,11 @@ class GroceryList extends BaseElement {
 
   exists(text, quantity, unit) {
     return this.state.items.findIndex(item => {
-      if (
-        item.text.toLowerCase() === text.toLowerCase() &&
-        item.unit === unit &&
-        item.quantity === quantity
-      ) {
+      if (item.text.toLowerCase() === text.toLowerCase()) {
+        if (quantity) {
+          return item.unit === unit;
+        }
+
         return true;
       }
     });
@@ -25,7 +25,6 @@ class GroceryList extends BaseElement {
     }
 
     var duplicate = this.exists(text, quantity, unit);
-
     if (~duplicate) {
       this.update(duplicate, { text, quantity, unit });
     } else {
@@ -41,10 +40,6 @@ class GroceryList extends BaseElement {
         behavior: "smooth"
       });
     }
-  }
-
-  reset() {
-    this.setState({ items: [] });
   }
 
   update(index, ingredient) {
