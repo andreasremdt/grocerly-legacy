@@ -1,5 +1,5 @@
 import BaseElement from "./base-element.js";
-import { html } from "../node_modules/lit-html/lit-html.js";
+import { html } from "../web_modules/lit-html.js";
 
 class GroceryList extends BaseElement {
   constructor() {
