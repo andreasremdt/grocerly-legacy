@@ -18,7 +18,12 @@ body {
 
   color: var(--dark-gray);
 
-  font: 300 14px/1.6 Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", sans-serif;
+  font: 300 14px/1.6 Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Helvetica Neue", sans-serif;
+}
+
+svg {
+  vertical-align: middle;
 }
 
 table {
@@ -28,7 +33,7 @@ table {
 }
 
 td {
-  padding: .5rem 1rem;
+  padding: 0.5rem 1rem;
 }
 
 td:last-child {

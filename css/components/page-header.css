@@ -5,7 +5,7 @@
   background: linear-gradient(to right, var(--orange), var(--pink));
   color: white;
 
-  box-shadow: 0 3px 6px rgba(0, 0, 0, .15);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
 }
 
 .page-header > .title {
@@ -19,11 +19,17 @@
 }
 
 .page-header > .button {
+  padding: unset;
   position: absolute;
+  top: 2rem;
   right: 1rem;
-  bottom: 1rem;
+
+  background-color: transparent;
+  color: white;
+
+  border: unset;
 }
 
-.page-header > .button > .icon {
-  pointer-events: none;
+.page-header > .button:active {
+  color: var(--dark-gray);
 }

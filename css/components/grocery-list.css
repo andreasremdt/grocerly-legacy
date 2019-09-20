@@ -1,5 +1,6 @@
 grocery-list {
   padding: 1rem 0;
+  height: 100%;
 
   overflow-x: auto;
 }
@@ -14,22 +15,52 @@ grocery-list {
 
   border: none;
   border-radius: 50%;
-  
+
   font-family: inherit;
   line-height: 1;
   font-size: 18px;
   font-weight: 500;
-  
+
   cursor: pointer;
 }
 
 .grocery-list .button:hover,
 .grocery-list .button:focus {
-  box-shadow: 0 2px 4px rgba(0, 0, 0, .1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .grocery-list .checked {
   text-decoration: line-through;
+
+  color: var(--medium-gray);
+}
+
+/* Empty Message */
+.empty-message {
+  padding: 0 1rem;
+
+  position: relative;
+  top: 50%;
+
+  text-align: center;
+
+  transform: translateY(-50%);
+}
+
+.empty-message > .icon {
+  margin-bottom: 1rem;
+
+  color: var(--pink);
+}
+
+.empty-message > .title {
+  margin: unset;
+
+  font-weight: 300;
+}
+
+.empty-message > .text {
+  margin: unset;
 
   color: var(--medium-gray);
 }

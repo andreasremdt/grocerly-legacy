@@ -17,18 +17,17 @@ import "./js/grocery-list.js";
   "use strict";
 
   var form = document.querySelector("form"),
-      toggle = document.querySelector('[data-action="menu-toggle"]'),
-      groceryList = document.querySelector("grocery-list");
+    groceryList = document.querySelector("grocery-list"),
+    btnClearList = document.querySelector('[data-action="clear-list"]');
 
   function handlePaste(evt) {
     evt.preventDefault();
 
     var data = evt.clipboardData.getData("text").split(/\n/g);
-
     if (data.length) {
       data.forEach(entry => {
         if (!entry.includes(":")) {
-          groceryList.add(entry)
+          groceryList.add({ text: entry });
         }
       });
 
@@ -40,23 +39,22 @@ import "./js/grocery-list.js";
     evt.preventDefault();
 
     var { text, quantity, unit } = form;
-    
-    groceryList.add({ text: text.value, quantity: quantity.value, unit: unit.value });
+
+    groceryList.add({
+      text: text.value,
+      quantity: quantity.value,
+      unit: unit.value
+    });
 
     form.reset();
     form.text.focus();
   }
 
-  function handleMenuToggle(evt) {
-    var target = document.querySelector(evt.target.dataset.target);
-
-    if (target) {
-      target.classList.toggle("-visible");
-    }
+  function handleListClear() {
+    groceryList.reset();
   }
 
   form.addEventListener("submit", handleFormSubmit);
   form.addEventListener("paste", handlePaste);
-  toggle.addEventListener("click", handleMenuToggle);
+  btnClearList.addEventListener("click", handleListClear);
 })();
-

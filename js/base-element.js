@@ -1,4 +1,4 @@
-import { render, html } from '../node_modules/lit-html/lit-html.js';
+import { render, html } from "../node_modules/lit-html/lit-html.js";
 
 class BaseElement extends HTMLElement {
   constructor() {
@@ -8,8 +8,6 @@ class BaseElement extends HTMLElement {
   }
 
   connectedCallback() {
-    var hasRendered = false;
-
     for (let key in this.state) {
       var data = localStorage.getItem(key);
 
@@ -19,20 +17,16 @@ class BaseElement extends HTMLElement {
             [key]: JSON.parse(data)
           });
 
-          hasRendered = true;
-        } catch(ex) {
+          render(this.render(), this, { eventContext: this });
+        } catch (ex) {
           console.warn(ex);
         }
       }
     }
-
-    if (!hasRendered) {
-      this.render();
-    }
   }
 
   setState(state, options = {}) {
-    this.state = state;
+    this.state = Object.assign({}, state);
 
     if (options.persist) {
       for (let key in state) {
@@ -40,11 +34,7 @@ class BaseElement extends HTMLElement {
       }
     }
 
-    this.render();
-  }
-
-  render() {
-    render(this.template(), this, { eventContext: this });
+    render(this.render(), this, { eventContext: this });
   }
 }
 
