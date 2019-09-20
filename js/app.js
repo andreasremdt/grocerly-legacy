@@ -1,18 +1,5 @@
-/*
-Watermelon Smoothie Bowl
-300 g (2 cups) strawberry, stems removed
-65 g (⅓ cup) banana, sliced
-230 g (1 ½ cup) watermelon, peeled and cubed
-60 mL (¼ cup) coconut water
-215 g (1 cup) ice
-Toppings:
-kiwi
-mango
-pomegranate seeds
-*/
-
-import "./js/grocery-list.js";
-import { parsePastedContent, sanitize } from "./js/utils/helpers.js";
+import "./grocery-list.js";
+import { parsePastedContent, sanitize } from "./utils/helpers.js";
 
 (function() {
   "use strict";
@@ -51,4 +38,10 @@ import { parsePastedContent, sanitize } from "./js/utils/helpers.js";
   form.addEventListener("submit", handleFormSubmit);
   form.addEventListener("paste", handlePaste);
   btnClearList.addEventListener("click", handleListClear);
+
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("/sw.js").then(() => {
+      console.log("Service worker has been installed.");
+    });
+  }
 })();

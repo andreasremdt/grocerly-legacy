@@ -1,4 +1,4 @@
-import { render, html } from "../node_modules/lit-html/lit-html.js";
+import { render } from "../node_modules/lit-html/lit-html.js";
 
 class BaseElement extends HTMLElement {
   constructor() {
@@ -27,7 +27,7 @@ class BaseElement extends HTMLElement {
 
   setState(state, options = {}) {
     this.state = Object.assign({}, state);
-    console.log(this.state);
+
     if (options.persist) {
       for (let key in state) {
         localStorage.setItem(key, JSON.stringify(state[key]));
@@ -39,4 +39,3 @@ class BaseElement extends HTMLElement {
 }
 
 export default BaseElement;
-export { html };
