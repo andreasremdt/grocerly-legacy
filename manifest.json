@@ -1,7 +1,7 @@
 {
   "name": "Grocerly",
   "short_name": "Grocerly",
-  "theme_color": "#ff3489",
+  "theme_color": "#fff",
   "background_color": "#fff",
   "display": "standalone",
   "orientation": "portrait",

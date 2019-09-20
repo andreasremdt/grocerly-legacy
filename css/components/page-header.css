@@ -2,10 +2,9 @@
   padding: 2rem 1rem 1rem;
   position: relative;
 
-  background: linear-gradient(to right, var(--orange), var(--pink));
-  color: white;
+  background-color: white;
 
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, .15);
 }
 
 .page-header > .title {
@@ -16,16 +15,18 @@
   letter-spacing: 1px;
   font-size: 12px;
   font-weight: 500;
+
+  color: var(--pink);
 }
 
 .page-header > .button {
   padding: unset;
   position: absolute;
-  top: 2rem;
+  top: 1.9rem;
   right: 1rem;
 
   background-color: transparent;
-  color: white;
+  color: var(--pink);
 
   border: unset;
 }
